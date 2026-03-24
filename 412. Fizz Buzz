@@ -1,0 +1,70 @@
+//BruteForce
+
+import java.util.*;
+
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> ans = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                ans.add("FizzBuzz");
+            } else if (i % 3 == 0) {
+                ans.add("Fizz");
+            } else if (i % 5 == 0) {
+                ans.add("Buzz");
+            } else {
+                ans.add(String.valueOf(i));
+            }
+        }
+
+        return ans;
+    }
+}
+
+
+//Better
+
+import java.util.*;
+
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> ans = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            String s = "";
+
+            if (i % 3 == 0) s += "Fizz";
+            if (i % 5 == 0) s += "Buzz";
+
+            if (s.isEmpty()) {
+                s = String.valueOf(i);
+            }
+
+            ans.add(s);
+        }
+
+        return ans;
+    }
+}
+
+//Best
+
+import java.util.*;
+
+class Solution {
+    public List<String> fizzBuzz(int n) {
+        List<String> ans = new ArrayList<>();
+
+        for (int i = 1; i <= n; i++) {
+            String s = "";
+
+            s += (i % 3 == 0) ? "Fizz" : "";
+            s += (i % 5 == 0) ? "Buzz" : "";
+
+            ans.add(s.isEmpty() ? String.valueOf(i) : s);
+        }
+
+        return ans;
+    }
+}
