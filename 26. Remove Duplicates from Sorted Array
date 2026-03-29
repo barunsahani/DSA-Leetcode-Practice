@@ -1,10 +1,10 @@
-//BruteForce (Not working for all cases , order is not sorted)
+//BruteForce (better) (Not working for all cases , order is not sorted)
 import java.util.*;
 
 class Solution {
 
     public int removeDuplicates(int[] nums) {
-        Set<Integer> set = new HashSet<>();
+        Set<Integer> set = new HashSet<>();          //To maintain sorted order we use LinkedHashSet and it works (accepted)
         for(int i = 0; i < nums.length; i++){
             set.add(nums[i]);
         }
@@ -14,5 +14,25 @@ class Solution {
             index++;
         }
         return index;
+    }
+}
+
+
+
+
+
+//Optimal Approach
+class Solution {
+
+    public int removeDuplicates(int[] nums) {
+        int i = 0;
+        int n = nums.length;
+        for(int j = 1; j < n; j++){
+            if(nums[j] != nums[i]){
+                nums[i+1] = nums[j];
+                i++;
+            }
+        }
+        return i+1;
     }
 }
