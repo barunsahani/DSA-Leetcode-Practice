@@ -1,4 +1,4 @@
-//Better Approach
+//Better Approach (tc : 0(2N))
 
 class Solution {
     public void sortColors(int[] nums) {
@@ -27,7 +27,7 @@ class Solution {
 }
 
 
-//Best Approach (using three pointer )
+//Best Approach (using three pointer )  (TC: O(N))
 
 class Solution {
     public void sortColors(int[] nums) {
