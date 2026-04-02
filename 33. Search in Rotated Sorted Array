@@ -33,7 +33,7 @@ class Solution {
             }
 
 
-//using linear search 
+//using linear search (BruteForce)
 
 class Solution {
     public int search(int[] nums, int target) {
