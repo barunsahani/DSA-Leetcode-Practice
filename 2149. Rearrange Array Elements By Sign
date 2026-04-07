@@ -31,25 +31,27 @@ class Solution {
     }
 }
 
-//Another Approach
+
+//Optimal Approach
 
 class Solution {
     public int[] rearrangeArray(int[] nums) {
         int[] res = new int[nums.length];
-        int p = 0, n = 1;
+        int even = 0, odd = 1;
 
-        for (int x : nums) {
-            if (x > 0) {
-                res[p] = x;
-                p += 2;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                res[even] = nums[i];
+                even += 2;
             } else {
-                res[n] = x;
-                n += 2;
+                res[odd] = nums[i];
+                odd += 2;
             }
         }
         return res;
+
+        
     }
 }
 
 
-//Optimal Approach
