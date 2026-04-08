@@ -84,8 +84,7 @@ class Solution {
         int n = matrix.length;
         int m = matrix[0].length;
 
-        // int[] row = new int[n];
-        // int[] col = new int[m];
+        
 
         int col0 = 1;
 
