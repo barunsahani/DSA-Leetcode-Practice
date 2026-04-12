@@ -33,4 +33,33 @@ class Solution {
 }
 
 
-//Better Approach
+//Better Approach         T.C : O(NLOGN)
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        int n = nums.length;
+        int longest = 1;
+        int count = 0;
+        int last_Smaller = Integer.MIN_VALUE;
+
+        if(n == 0) return 0;  //edge case
+
+        Arrays.sort(nums);
+
+        for(int i = 0; i < n; i++) {
+
+            if(nums[i] - 1 == last_Smaller) {
+                count++;
+                last_Smaller = nums[i];
+            } else if(nums[i] != last_Smaller) {
+                count = 1;
+                last_Smaller = nums[i];
+            }
+           
+            longest = Math.max(longest,count);
+        }
+        return longest;
+    }
+}
+
+  
