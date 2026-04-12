@@ -1,0 +1,36 @@
+//BruteForce (Timelimit exceeded ) Time complexity : O (n^3)
+
+class Solution {
+    public int longestConsecutive(int[] nums) {
+        int n = nums.length;
+        int longest = 0;
+        int count = 0;
+        int x = 0;
+
+        for(int i = 0; i < n; i++) {
+            x = nums[i];
+            count = 1;
+            
+            while(linearSearch(nums,x+1) == true) {
+                x = x + 1;
+                count++;
+            }
+            longest = Math.max(longest,count);
+        }
+        return longest;
+    }
+
+    public boolean linearSearch(int[] nums, int no ) {
+        int n = nums.length;
+        for(int i = 0; i < n; i++) {
+            if(nums[i] == no) {
+                return true;
+            }
+            
+        }
+        return false;
+    }
+}
+
+
+//Better Approach
