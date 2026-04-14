@@ -1,0 +1,31 @@
+//BruteForce using nested loops   (T.C : O(n^3)  , S.C : O(1) )     //Time limit exceeded 
+
+
+
+class Solution {
+    public int maxProduct(int[] nums) {
+        int n = nums.length;
+        int curr_pro= 1;
+        int max_pro = Integer.MIN_VALUE;
+
+        for(int i = 0; i < n; i++) {
+            for(int j = i; j < n; j++) {
+                curr_pro = 1;
+                for (int k = i; k <= j; k++) {
+                   
+                    curr_pro *= nums[k];
+                }
+
+                
+
+                if(curr_pro > max_pro){
+                    max_pro = curr_pro ;
+                }
+               
+            }
+        }
+
+        
+        return max_pro;
+    }
+}
