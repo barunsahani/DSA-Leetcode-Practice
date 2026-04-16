@@ -1,3 +1,54 @@
+//BruteForce (Generate all strings and compare )   (T.C : O(n^3) , S.C : O(n) )   TIME LIMIT EXCEEDED (TLE)
+
+class Solution {
+    public String largestOddNumber(String num) {
+        String ans = "";
+        
+        for (int i = 0; i < num.length(); i++) {
+            for (int j = i; j < num.length(); j++) {
+                String sub = num.substring(i, j + 1);
+                
+                char last = sub.charAt(sub.length() - 1);
+                if ((last - '0') % 2 == 1) {       //CONVERTS CHAR TO INT 
+                    if (sub.length() > ans.length()) {
+                        ans = sub;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+
+
+//Better Approach (uses prefix )  (T.C : O(n^2) , S.C : O(n) )
+
+class Solution {
+    public String largestOddNumber(String num) {
+        String ans = "";
+        
+        for (int i = 0; i < num.length(); i++) {
+            String sub = num.substring(0, i + 1);
+            char last = sub.charAt(sub.length() - 1);
+            
+            if ((last - '0') % 2 == 1) {
+                ans = sub;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
+
+
+
+//Optimal Approach (traversing right to left and finding odd )     (T.C : O(n) , S.C : O(n) )
+
 class Solution {
     public String largestOddNumber(String num) {
         // Returns the largest odd number substring from the given string
