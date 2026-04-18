@@ -1,0 +1,31 @@
+//BruteForce Approach   (T.C : O(n^2) , S.C : O(1) )
+
+
+
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+
+                // If characters in s match
+                if (s.charAt(i) == s.charAt(j)) {
+                    // Then t must also match
+                    if (t.charAt(i) != t.charAt(j)) {
+                        return false;
+                    }
+                }
+
+                // If characters in s don't match
+                else {
+                    // Then t must also be different
+                    if (t.charAt(i) == t.charAt(j)) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+}
