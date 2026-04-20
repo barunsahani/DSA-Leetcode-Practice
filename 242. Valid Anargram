@@ -2,28 +2,59 @@
 
 class Solution {
     public boolean isAnagram(String s, String t) {
-        //edge case
-        if(s.length() != t.length()) return false;
+        //edge case   // Case 1: when both of the strings have different lengths
+        if(s.length() != t.length()) return false;   // Strings can't be anagrams if lengths are different
 
+             // Convert strings to char arrays and sort them
         char[] charArray1 = s.toCharArray();
         char[] charArray2 = t.toCharArray();
 
         Arrays.sort(charArray1);
         Arrays.sort(charArray2);
 
-
+        // Case 2: check if every character of str1 and str2 matches with each other
         for(int i = 0; i < s.length(); i++) {
             if(charArray1[i] != charArray2[i]){
-                return false;
+                return false;    // If any character doesn't match, they aren't anagrams
+
             }
         }
 
-        return true;
+        return true; // Strings are anargram
     }
 }
 
 
 
 
-//Optimal Approach     ( T.C : O (n logn) , S.C: O(n) )
+//Optimal Approach     ( T.C : O (n) , S.C: O(1) )
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+       // Case: when both of the strings have different lengths
+        if (s.length() != t.length()) 
+            return false;
+
+        // Initialize a frequency array to store character counts
+        int[] freq = new int[26];
+
+       // Count frequency of each character in str1
+        for (int i = 0; i < s.length(); i++) {
+            freq[s.charAt(i) - 'A']++; 
+        }
+
+         // Decrement frequency for each character in str2
+        for (int i = 0; i <t.length(); i++) {
+            freq[t.charAt(i) - 'A']--;  
+        }
+
+       // Check if all frequencies are zero, meaning both strings have the same characters
+        for (int i = 0; i < 26; i++) {
+            if (freq[i] != 0)  
+                return false;
+        }
+
+        return true;   // The strings are anargrams
+    }
+}
 
