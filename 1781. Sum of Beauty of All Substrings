@@ -1,0 +1,45 @@
+//BruteForce Approach    (T.C : O(n^3) , S.C : O(1 or 26) )
+
+Logic : Pick start (i)
+    → expand end (j)
+        → build frequency
+        → find max & min
+        → compute beauty
+        → add to total
+
+Code :
+
+
+class Solution {
+
+    public int countSubstring(String s, int i, int j) {
+        int[] freq = new int[26];
+
+        for(int k = i; k <= j; k++) {
+            freq[s.charAt(k) - 'a']++;
+        }
+
+        int max = 0;
+        int min = Integer.MAX_VALUE;
+
+        for(int f : freq) {
+            if(f > 0) {        // ignore zero frequencies
+            max = Math.max(max, f);
+            min = Math.min(min, f);
+            }
+        }
+        return max - min ;
+    }
+    
+    public int beautySum(String s) {
+        int n = s.length();
+        int sum = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = i; j < n; j++) {
+                int r = countSubstring(s,i,j);
+                sum += r;
+            }
+        }
+        return sum;
+    }
+}
