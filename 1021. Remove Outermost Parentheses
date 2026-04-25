@@ -1,4 +1,4 @@
-//BruteForce
+//BruteForce Approach
 
 class Solution {
     public String removeOuterParentheses(String s) {
