@@ -19,7 +19,7 @@ public double myPow(double x, int n) {
 
 
 
-//Better Approach     ( T.C : O(logn) , S.C : O(logn) ) //recursive stack
+//Better Approach     ( T.C : O(logn) ,  S.C : O(logn) )  //recursive stack
 
 
 class Solution {
