@@ -3,7 +3,7 @@
 logic : Convert chars to values
 Traverse left → right
 If current < next → subtract
-Else → add
+Else → add  ...
 
 Code :
 
