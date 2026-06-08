@@ -1,3 +1,40 @@
+//BruteForce (T.C : O(k^2) , S.C : O(1) ) 
+
+
+class Solution {
+    public int maxScore(int[] cardPoints, int k) {
+        int n = cardPoints.length;
+
+        // Variable to store the max score found
+        int maxSum = 0;
+
+        // Try all combinations: i from front, k-i from back
+        for (int i = 0; i <= k; i++) {
+            // Store current sum for this combo
+            int tempSum = 0;
+
+            // Add first i cards from front
+            for (int j = 0; j < i; j++) {
+                tempSum += cardPoints[j];
+            }
+
+            // Add remaining cards from back
+            for (int j = 0; j < k - i; j++) {
+                tempSum += cardPoints[n - 1 - j];
+            }
+
+            // Update max score
+            maxSum = Math.max(maxSum, tempSum);
+        }
+
+        // Return the highest score possible
+        return maxSum;
+    }
+}
+
+
+
+
 //Optimal Solution    (T.C : O(k) , S.C : O(1) ) 
 
 
