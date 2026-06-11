@@ -26,6 +26,8 @@ class Solution {
 
 //Optimized Solution     (T.C : O(N) , S.C : O(1) )
 
+Main Idea : For every ending index i, find the earliest last occurrence among a, b, and c. Any starting index from 0 to that minimum position will produce a substring ending at i that contains all three characters. Hence add minIndex + 1 to the answer.
+
 
 class Solution {
     public int numberOfSubstrings(String s) {
