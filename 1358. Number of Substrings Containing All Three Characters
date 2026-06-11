@@ -1,0 +1,21 @@
+//BruteForce Approach   (T.C : O(N^2) , S.C : O(1) )     "Time Limit Exceeded!!!!"
+
+Main idea :  Generate every substring and count those whose frequency array shows at least one a, one b, and one c.
+
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int n = s.length();
+        int count = 0;
+
+        for(int i = 0; i < n; i++) {
+            int[] freq = new int[3];
+            for(int j = i; j < n; j++) {
+                 freq[s.charAt(j) - 'a']++;
+                if(freq[0] > 0 && freq[1] > 0 && freq[2] > 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
