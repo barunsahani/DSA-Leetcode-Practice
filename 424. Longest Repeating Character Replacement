@@ -31,7 +31,7 @@ class Solution {
 
 
 
-//Better Approach     (T.C : O(2N * 26) , S.C : O(26) )   {INCORRECT SOLUTION }
+//Better Approach     (T.C : O(2N * 26) , S.C : O(26) )   {INCORRECT SOLUTION }   => This worked as we are generating length not the actual string , so ignore this !!!!
 
 Main Idea : Keep expanding the window while the number of characters to replace (windowSize - maxFrequency) is at most k; otherwise shrink from the left.
 
