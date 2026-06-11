@@ -31,7 +31,7 @@ class Solution {
 
 
 
-//Better Approach     (T.C : O(2N * 26) , S.C : O(26) )   
+//Better Approach     (T.C : O(2N * 26) , S.C : O(26) )   {INCORRECT SOLUTION }
 
 Main Idea : Keep expanding the window while the number of characters to replace (windowSize - maxFrequency) is at most k; otherwise shrink from the left.
 
@@ -84,6 +84,41 @@ class Solution {
                 for(int i = 0; i < 26; i++) {
                     maxfq = Math.max(maxfq , freq[i]); 
                 }
+                l++;
+                
+            }
+
+            if(((r - l + 1) - maxfq) <= k){
+                maxlen = Math.max(maxlen, r - l + 1);
+            }
+            r++;
+
+
+        }
+        return maxlen;
+    }
+}
+
+
+
+//OPTIMAL (BEST) SOLUTION          (T.C : O(N ) , S.C : O(26) ) 
+
+
+class Solution {
+    public int characterReplacement(String s, int k) {
+       int n = s.length();
+        int maxlen = 0;
+        int maxfq = 0;
+        int l = 0, r = 0;
+        int[] freq = new int[26];
+
+
+        while(r < n) {
+            freq[s.charAt(r) - 'A']++;
+            maxfq = Math.max(maxfq , freq[s.charAt(r) - 'A']);
+
+            if((r-l+1) - maxfq > k) {
+                freq[s.charAt(l) - 'A']--;
                 l++;
                 
             }
