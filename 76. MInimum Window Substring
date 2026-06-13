@@ -36,6 +36,39 @@ class Solution {
 
 
 
+//OPTIMIZED APPROACH     (T.C : O(2N) , S.C : O(256) 
 
+class Solution {
+    public String minWindow(String s, String t) {
+        int n = s.length();
+        int m = t.length();
+        int[] hash = new int[256];
+        int min_len = Integer.MAX_VALUE;
+        int start_index = -1;
+        int count = 0;
+        int l = 0, r = 0;
+
+        for(int j = 0; j < m; j++) hash[t.charAt(j)]++;
+
+        while( r < n) {
+            if(hash[s.charAt(r)] > 0) count++;
+            hash[s.charAt(r)]--;
+
+            while(count == m) {
+                if(r - l + 1 < min_len) {
+                        min_len = r - l + 1;
+                        start_index = l;
+                        
+                    }
+                    hash[s.charAt(l)]++;
+                if(hash[s.charAt(l)] > 0) count--;    
+                l++;
+            }
+            r++;
+        }
+
+        return start_index == -1 ? "" : s.substring(start_index, start_index + min_len);
+    }
+}
 
 
