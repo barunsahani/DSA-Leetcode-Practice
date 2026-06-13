@@ -36,7 +36,7 @@ class Solution {
 
 
 
-//OPTIMIZED APPROACH     (T.C : O(2N) , S.C : O(256) 
+//OPTIMIZED APPROACH     (T.C : O(2N + M) , S.C : O(256) 
 
 class Solution {
     public String minWindow(String s, String t) {
