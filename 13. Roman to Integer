@@ -42,7 +42,7 @@ class Solution {
 
 
 
-//Optimized Approach     (T.C : O(N) , S.C: O(N) )
+//Optimized Approach :     (T.C : O(N) , S.C: O(N) )
 logic : Traverse right → left
 Keep track of previous value
 If current < previous → subtract
