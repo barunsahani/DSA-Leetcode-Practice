@@ -1,0 +1,24 @@
+//BruteForce Solution by Apna College   //TLE
+
+Time Complexity :	O(n²)
+Space Complexity :	O(1)
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        int maxWater = 0;
+
+        for (int i = 0; i < height.length; i++) {
+
+            for (int j = i + 1; j < height.length; j++) {
+                int ht = Math.min(height[i], height[j]);
+                int width = j - i;
+                int currWater = ht * width;
+
+                maxWater = Math.max(maxWater, currWater);
+            }
+
+        }
+        return maxWater;
+    }
+}
