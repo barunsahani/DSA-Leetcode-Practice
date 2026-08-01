@@ -1,0 +1,35 @@
+
+Time Complexity	O(n²)
+Space Complexity	O(n)
+
+class Solution {
+    public int[] beautifulArray(int n) {
+        
+        int[] beautiful = new int[n];
+        beautiful[0] = 1;
+        int size = 1;
+
+        while (size < n) {
+
+            int[] temp = new int[n];
+            int index = 0;
+
+            for (int i = 0; i < size; i++) {
+                if (2 * beautiful[i] <= n) {
+                    temp[index++] = 2 * beautiful[i];
+                }
+            }
+
+            for (int i = 0; i < size; i++) {
+                if (2 * beautiful[i] - 1 <= n) {
+                    temp[index++] = 2 * beautiful[i] - 1;
+                }
+            }
+
+            beautiful = temp;
+            size = index;
+        }
+
+        return beautiful;
+    }
+}
