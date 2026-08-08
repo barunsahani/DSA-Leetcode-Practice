@@ -1,4 +1,5 @@
-[ T.C : O( 2^t * k) , S.C : O(k*x) ]
+[ T.C : O( 2^t * k) , 
+S.C : O(k*x) to store all valid combinations, where x is the number of combinations and k is their average length. ]
 
 class Solution {
 
