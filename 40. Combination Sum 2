@@ -45,3 +45,52 @@ class Solution {
         }
     }
 }
+
+
+
+
+//bruteforce 
+
+
+import java.util.*;
+
+class Solution {
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+
+        Set<List<Integer>> set = new HashSet<>();
+
+        generate(0, candidates, target, new ArrayList<>(), set);
+
+        return new ArrayList<>(set);
+    }
+
+    private void generate( int index, int[] arr, int target, List<Integer> current, Set<List<Integer>> set) {
+
+        // Reached the end
+        if (index == arr.length) {
+
+            if (target == 0) {
+                List<Integer> temp = new ArrayList<>(current);
+
+                // Important: Set compares Lists based on their elements
+                Collections.sort(temp);
+
+                set.add(temp);
+            }
+
+            return;
+        }
+
+        // Don't take
+        generate(index + 1, arr, target, current, set);
+
+        // Take
+        current.add(arr[index]);
+
+        generate( index + 1, arr, target - arr[index], current, set );
+
+        // Backtrack
+        current.remove(current.size() - 1);
+    }
+}
