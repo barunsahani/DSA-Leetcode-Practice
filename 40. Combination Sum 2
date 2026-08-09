@@ -1,0 +1,47 @@
+[T.C :  O(2^n * k ) , S.C : O(k * x) ]
+
+
+
+import java.util.*;
+
+class Solution {
+
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(candidates);
+        findCombinations(0, candidates, target, new ArrayList<>(), ans);
+        return ans;
+    }
+
+    private void findCombinations(int index,int[] candidates,int target,List<Integer> ds,List<List<Integer>> ans) {
+
+        // Target achieved
+        if (target == 0) {
+            ans.add(new ArrayList<>(ds));
+            return;
+        }
+
+        for (int i = index; i < candidates.length; i++) {
+
+            // 2. Skip duplicates at the same recursion level
+            if (i > index && candidates[i] == candidates[i - 1]) {
+                continue;
+            }
+
+            // 3. Since array is sorted, no later element can work
+            if (candidates[i] > target) {
+                break;
+            }
+
+            // Choose
+            ds.add(candidates[i]);
+
+            // i + 1 => each element can be used only once
+            findCombinations( i + 1, candidates, target - candidates[i], ds, ans);
+
+            // Backtrack
+            ds.remove(ds.size() - 1);
+        }
+    }
+}
