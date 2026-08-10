@@ -3,8 +3,6 @@
 
 class Solution {
     public int longestOnes(int[] nums, int k) {
-ndvsklfjkwj
-
         int n = nums.length;
         int zeros;
         int len = 0, maxlen = 0;
