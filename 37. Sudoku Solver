@@ -1,5 +1,5 @@
 Time: O(9^E), where E is the number of empty cells.
-Space: O(E) due to the recursion stack (O(81) = O(1) for a standard 9×9 Sudoku).
+Space: O(E) due to the recursion stack (O(81) = O(1) for a standard 9×9 Sudoku).[ Solved ]
 
 
 class Solution {
