@@ -1,3 +1,5 @@
+//Method 1
+
 class Solution {
     public ArrayList<String> ratInMaze(int[][] maze) {
         // code here
