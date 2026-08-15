@@ -1,0 +1,69 @@
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        // code here
+        
+        //Method 1  (nlogn)
+        
+        int n = arr.length;
+        // Arrays.sort(arr);
+        // int largest = arr[n-1];
+        // int second = -1;
+        
+        // for(int i = n-2; i >= 0 ; i--) {
+        //     if(arr[i] != largest) {
+        //         second  = arr[i];
+        //         break;
+        //     }
+        // }
+        // return second;
+
+        //Method 2   (n)
+        // return secondLargest(arr,arr.length);
+        
+        //Method 3  (n )
+        // Initialize variables to track the smallest, second smallest, largest, and second largest elements
+            
+            int large = arr[0], second_large = -1;
+
+            // Find the smallest and largest elements in the array
+            for (int i = 1; i < n; i++) {
+            
+                large = Math.max(large, arr[i]);  // Update the largest element
+            }
+
+            // Find the second smallest and second largest elements
+            for (int i = 0; i < n; i++) {
+               
+                if (arr[i] > second_large && arr[i] != large) {
+                    second_large = arr[i];  // Update second largest if a larger element is found
+                }
+            }
+
+            return second_large;
+        
+        
+    }
+    
+    
+    // // Function to find the second largest element in the array
+    // public static int secondLargest(int[] arr, int n) {
+    //     // Edge case: if the array has fewer than 2 elements
+    //     if (n < 2)
+    //         return -1;
+
+    //     int large = arr[0], second_large = -1 ;
+
+    //     // Loop through the array to find the second largest element
+    //     for (int i = 1; i < n; i++) {
+    //         // Update the largest and second largest values
+    //         if (arr[i] > large) {
+    //             second_large = large;
+    //             large = arr[i];
+    //         } 
+    //         else if (arr[i] > second_large && arr[i] != large) {
+    //             second_large = arr[i];
+    //         }
+    //     }
+    //     return second_large; // Return the second largest element
+    // }
+}
