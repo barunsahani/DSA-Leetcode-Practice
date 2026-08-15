@@ -1,0 +1,69 @@
+Time: O(1)
+Space: O(1)
+
+
+class Solution {
+    public boolean isValidSudoku(char[][] board) {
+        
+         if (sudokuValid(board)) {
+                return true;
+                
+            } else {
+                return false;
+            }
+    }
+
+     public static boolean sudokuValid(char sudoku[][]) {
+        char digit;
+    for (int row = 0; row < 9; row++) {
+
+        for (int col = 0; col < 9; col++) {
+
+            if (sudoku[row][col] != '.') {
+
+                 digit = sudoku[row][col];
+
+                if (!isSafe(sudoku, row, col, digit)) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    return true;
+    }
+
+
+
+    public static boolean isSafe(char sudoku[][], int row, int col, char digit) {
+        //column
+        for (int i = 0; i <= 8; i++) {
+            if(i != row && sudoku[i][col] == digit) {
+                return false;
+            } 
+
+        }
+
+        //row
+        for (int j = 0; j <= 8; j++) {
+            if(j != col &&sudoku[row][j] == digit) {
+                return false;
+            } 
+
+        }
+
+        //grid 
+        int sr = (row/3) * 3;
+        int sc = (col/3) * 3;
+        //3*3 grid
+        for(int i = sr; i < sr + 3; i++) {
+            for(int j = sc; j < sc + 3; j++) {
+                if((i != row || j != col) &&
+                    sudoku[i][j] == digit) {
+                return false;
+                }
+            }
+        }
+        return true;
+    } 
+}
