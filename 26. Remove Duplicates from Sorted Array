@@ -12,7 +12,7 @@ class Solution {
         for(int n : set){
             nums[index] = n;
             index++;
-        }
+        }                                   //if sorted array is asked like in gfgs we can use Collections.sort(arr);
         return index;
     }
 }
@@ -39,7 +39,7 @@ class Solution {
 
 
 
-//Bruteforce using nested loops
+//Bruteforce using nested loops       //don't apply
 
 class Solution {
     public int removeDuplicates(int[] nums) {
