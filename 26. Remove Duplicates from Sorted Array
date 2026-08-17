@@ -1,5 +1,5 @@
 //BruteForce (better) (Not working for all cases , order is not sorted)
-import java.util.*;
+import java.util.*;              [T.C : O(NLOGN) , S.C : O(N) ]
 
 class Solution {
 
@@ -21,7 +21,7 @@ class Solution {
 
 
 
-//Optimal Approach
+//Optimal Approach [2 pointer Approach ]   [T.C : O(N) , S.C : O(1) ]
 class Solution {
 
     public int removeDuplicates(int[] nums) {
@@ -39,7 +39,7 @@ class Solution {
 
 
 
-//Bruteforce using nested loops       //don't apply
+//Bruteforce using nested loops       //don't apply     [T.C : O(N^2) , S.C : O(N) ]
 
 class Solution {
     public int removeDuplicates(int[] nums) {
