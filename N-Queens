@@ -1,4 +1,4 @@
-Time : O(n* n!)
+Time : O(n* n!)     //revise left
 Space: O(n² + k × n²)
 
 import java.util.*;
