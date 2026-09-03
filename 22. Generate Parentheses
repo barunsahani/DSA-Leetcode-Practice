@@ -1,10 +1,22 @@
 //BruteForce Approach 
 
-Complexity	Brute Force
+Key-Idea:
+Generate all possible combinations of n opening and n closing brackets.
+
+For n = 3:
+Total characters = 6
+Generate all 2⁶ = 64 possibilities.
+Check each string using a balance counter.
+Keep only valid parentheses strings.
+
+Complexity	
+Brute Force
 Time	O(n × 2²ⁿ) = O(n × 4ⁿ)
 Auxiliary Space	O(n)
 Output Space	O(n × Cₙ)
 Total Space	O(n × Cₙ)
+
+Code :->
 
 class Solution {
     public List<String> generateParenthesis(int n) {
@@ -30,6 +42,46 @@ class Solution {
         }
         generateAll(curr + "(", n, res);
         generateAll(curr + ")", n, res);
+    }
+
+}
+
+
+
+
+//Optimal Approach
+
+Key-Idea:
+Don't generate invalid strings in the first place.
+
+Keep track of:
+
+open = number of ( used
+close = number of ) used
+
+Time Complexity: O(2^n) (Catalan number): C(n) = (2n)! / (n!(n+1)!) is the number of valid sequences.
+Each sequence takes O(n) to build.
+So, total complexity: O(C(n) × n)
+
+Space Complexity: O(n) recursion depth.
+O(C(n) × n) to store results.
+
+Code:->
+
+class Solution {
+      public void backtrack(String curr, int open, int close, int n, List<String> res) {
+        if (curr.length() == 2 * n) {
+            res.add(curr);
+            return;
+        }
+        if (open < n) backtrack(curr + "(", open + 1, close, n, res);
+        if (close < open) backtrack(curr + ")", open, close + 1, n, res);
+    }
+
+    public List<String> generateParenthesis(int n) {
+        List<String> res = new ArrayList<>();
+        backtrack("", 0, 0, n, res);
+        return res;
     }
 
 }
