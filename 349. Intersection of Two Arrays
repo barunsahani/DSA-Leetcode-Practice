@@ -68,3 +68,50 @@ class Solution {
         return ans;
     }
 }
+
+
+
+#OPTIMIZED APPROACH
+
+Key idea for documentation
+
+Store nums1 in a HashSet, then check each nums2 element using contains(). Add common elements to another HashSet to automatically eliminate duplicates.
+
+Time: O(n + m) average, because HashSet insertion and lookup are O(1) average.
+Space: O(n + m) including the result; auxiliary space is O(n) for the HashSet.
+
+CODE:->
+
+class Solution {
+    public int[] intersection(int[] nums1, int[] nums2) {
+
+        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> result = new HashSet<>();
+
+        // Store nums1
+        for (int num : nums1) {
+            set.add(num);
+        }
+
+        // Find common elements
+        for (int num : nums2) {
+            if (set.contains(num)) {
+                result.add(num);
+            }
+        }
+
+        // Convert HashSet to array
+        int[] ans = new int[result.size()];
+
+        int i = 0;
+        for (int num : result) {
+            ans[i] = num;
+            i++;
+        }
+
+        return ans;
+    }
+}
+
+
+
