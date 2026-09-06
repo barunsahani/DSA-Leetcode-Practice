@@ -1,5 +1,22 @@
 #BRUTEFORCE APPROACH
 
+Key-Idea
+
+For every element of nums1:
+
+Search for the same element in nums2.
+If found, check whether we have already added that element to the answer.
+If not already present, add it.
+
+You can use:
+
+nested loops for searching
+another loop to check duplicates
+
+Complexity	Brute Force
+Time	O(n × m)
+Space	O(min(n,m))
+
 CODE:->
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
