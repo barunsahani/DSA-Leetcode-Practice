@@ -27,3 +27,30 @@ class Solution {
         return -1;
     }
 }
+
+
+
+#BETTER APPROACH
+
+KEY-IDEA : Use a hash array to mark the numbers that exist, then find the index that remains unmarked.
+
+Complexity	Value
+Time       	O(n)	
+Space    	O(n)
+
+CODE:->.
+class Solution {
+    public int missingNumber(int[] nums) {
+        int[] hash = new int[nums.length+1];
+
+        for(int i = 0; i < nums.length; i++) {
+            hash[nums[i]] = 1;
+        }
+        for(int i = 0; i <= nums.length; i++) {
+            if(hash[i] == 0) return i;
+        }
+
+
+        return -1;
+    }
+}
