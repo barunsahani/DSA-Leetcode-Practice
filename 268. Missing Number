@@ -54,3 +54,54 @@ class Solution {
         return -1;
     }
 }
+
+
+#OPTIMAL APPROACH 
+
+##Method 1
+
+KEY-IDEA : Expected Sum − Actual Sum = Missing Number
+
+Complexity	Value
+Time       	O(2n)	
+Space    	O(1)
+
+CODE:->
+
+class Solution {
+    public int missingNumber(int[] nums) {
+        int sum = (nums.length * ( nums.length + 1)) / 2;
+        int sum2 = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            sum2 = sum2 + nums[i];
+        }
+        return sum - sum2;
+    }
+}
+
+
+##Method 2
+
+KEY-IDEA :XOR the expected numbers with the array numbers; matching numbers cancel out, leaving the missing number.
+
+Complexity	Value
+Time       	O(n)	
+Space    	O(1)
+
+CODE:->
+
+class Solution {
+    public int missingNumber(int[] nums) {
+       int xor1 = 0;
+       int xor2 = 0;
+
+        for(int i = 0; i < nums.length; i++) {
+            xor2 = xor2 ^ nums[i];
+            xor1 = xor1 ^ (i + 1);
+        }
+
+
+        return xor1 ^ xor2;
+    }
+}
