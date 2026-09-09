@@ -1,5 +1,12 @@
 #BRUTEFORCE APPROACH
 
+Key Idea
+For each index i, traverse the entire array.
+Skip nums[i].
+Multiply all other elements.
+Store the product in ans[i].
+Repeat for every index.
+
 TIME : O(N^2)
 SPACE: 0(1) 
 
@@ -18,6 +25,44 @@ class Solution {
                 ans[i] = product;
             }
         }
+        return ans;
+    }
+}
+
+
+
+#OPTIMIZED APPROACH (prefix and suffix)
+
+Key Idea
+Use prefix product and suffix product.
+For each index i:
+answer[i] = product of all elements before i × product of all elements after i
+Calculate prefix products in one pass and suffix products in another.
+
+Time: O(n)
+Extra Space: O(1) excluding the output array.
+
+CODE:->>
+
+class Solution {
+    public int[] productExceptSelf(int[] nums) {
+        int n = nums.length;
+        int[] ans = new int[n];
+
+        // Prefix product
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            ans[i] = prefix;
+            prefix *= nums[i];
+        }
+
+        // Suffix product
+        int suffix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            ans[i] *= suffix;
+            suffix *= nums[i];
+        }
+
         return ans;
     }
 }
