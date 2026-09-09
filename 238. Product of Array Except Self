@@ -1,6 +1,7 @@
 #BRUTEFORCE APPROACH
 
 TIME : O(N^2)
+SPACE: 0(1) 
 
 CODE:->>
 
