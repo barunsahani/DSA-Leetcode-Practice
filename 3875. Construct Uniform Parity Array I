@@ -1,0 +1,8 @@
+#LEARN LATER!!!!!!!!!!!!! (10 SEPTEMBER )
+
+
+class Solution {
+    public boolean uniformArray(int[] nums1) {
+        return true;
+    }
+}
