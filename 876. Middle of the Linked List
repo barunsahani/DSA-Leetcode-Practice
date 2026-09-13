@@ -1,3 +1,62 @@
+#BRUTEFORCE APPROACH
+
+KEY -IDEA:
+
+This approach finds the size of the linked list first, then uses the size to reach the middle node.
+
+First traversal: Count the total number of nodes → sz
+
+Calculate the middle position:
+
+int mid = (sz / 2) + 1;
+Second traversal: Move temp until it reaches the mid-th node.
+Return tem
+
+Complexity	        
+Time	O(n)
+Space	O(1)
+
+CODE:-->
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode middleNode(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        int sz = 0;
+        ListNode temp = head;
+
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        } 
+
+        int mid = (sz / 2) + 1;
+        temp = head;
+        while (temp != null) {
+            mid = mid - 1;
+
+            if(mid == 0) break;
+            
+            temp = temp.next;
+        } 
+
+        return temp;
+
+
+    }
+}
 
 
 //Slow-fast pointer  [TortoiseHare Method]
@@ -10,6 +69,7 @@ Complexity
 Time	O(n/2)
 Space	O(1)
 
+CODE:-->
 /**
  * Definition for singly-linked list.
  * public class ListNode {
