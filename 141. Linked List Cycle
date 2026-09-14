@@ -1,0 +1,42 @@
+//Apna College
+
+🔑 Key Idea
+
+Use Floyd’s Cycle Detection Algorithm (Slow & Fast Pointers).
+-slow moves 1 step at a time.
+-fast moves 2 steps at a time.
+-If there is a cycle, slow and fast will eventually meet at the same node.
+-If there is no cycle, fast will reach null.
+
+Time : O(N)
+Space : O(1)
+
+CODE:->
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if(slow == fast) {  
+                return  true;
+            }
+        }
+        return false;
+    }
+}
