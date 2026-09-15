@@ -1,5 +1,18 @@
 #APNA COLLEGE
 
+🔑 Key Idea — Palindrome Linked List
+
+Use 3 steps:
+
+Find the middle using the slow & fast pointer approach.
+Reverse the second half of the linked list.
+Compare the first half and reversed second half node by node.
+If any values differ → false
+If all match → true
+
+Time: O(n)
+Space: O(1)
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
