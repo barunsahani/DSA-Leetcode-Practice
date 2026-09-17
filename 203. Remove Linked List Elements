@@ -1,0 +1,45 @@
+#OWN LOGIC
+
+KEY-iDEA : Remove matching nodes from the beginning, then traverse the list and skip any matching next node by changing the next pointer.
+
+Time	O(n)
+Space	O(1)
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+
+        // Remove matching nodes from the beginning
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
+
+        // If list became empty
+        if (head == null) {
+            return null;
+        }
+
+        ListNode temp = head;
+
+        while (temp.next != null) {
+
+            if (temp.next.val == val) {
+                temp.next = temp.next.next;
+            } else {
+                temp = temp.next;
+            }
+        }
+
+        return head;
+
+    }
+}
