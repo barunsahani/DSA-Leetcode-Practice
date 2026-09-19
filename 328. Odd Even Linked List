@@ -74,3 +74,54 @@ class Solution {
     }
 }
 
+
+
+#OPTIMIZED APPROACH
+
+KEY IDEA:
+
+Use two pointers to create two separate chains:
+
+odd  → points to nodes at odd positions
+even → points to nodes at even positions
+
+Store the first even node in evenHead because after rearranging,
+we need to attach the even list after the odd list.
+
+Time: O(N)
+Space: O(1)
+
+CODE:->>
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        //if zero or only one node is available
+        if(head == null || head.next == null) return head;
+        
+        ListNode odd = head;
+        ListNode even = head.next;
+        ListNode evenHead = even;
+
+        while(even != null && even.next != null) {
+            odd.next = odd.next.next;
+            even.next = even.next.next;
+
+            odd = odd.next;
+            even = even.next;
+
+        }
+
+        odd.next = evenHead;
+        return head;
+    }
+}
