@@ -3,7 +3,7 @@
 Key-Idea 
 calculate size of LL
 decrease it with n
-move previous from deleted node 
+move temp to  previous of deleted node 
 arrange links
 
 T.C :O(2N) 
