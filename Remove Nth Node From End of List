@@ -1,3 +1,14 @@
+//Brute Force Approach
+
+Key-Idea 
+calculate size of LL
+decrease it with n
+move previous from deleted node 
+arrange links
+
+T.C :O(2N) 
+S.C : O(1)
+
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -39,6 +50,66 @@ class Solution {
         // Step 5: Delete node
         prev.next = temp.next;
         
+        return head;
+    }
+}
+
+
+
+//Optimal Solution Using Slow and fast pointer
+
+Key idea
+- Fast pointer: Moves n steps ahead first.
+- Slow pointer: Starts at head and follows fast.
+- When fast reaches the last node, slow is just before the node to remove.
+- slow.next = slow.next.next removes the target node by skipping it.
+- Edge case: If fast == null, remove the head and return head.next.
+Time complexity: \(O(L)\), where \(L\) is the length of the linked list.
+
+Space complexity: \(O(1)\), because only two pointers are used.
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+
+        // Using slow and fast pointers
+        ListNode fast = head;
+
+        // Move the fast pointer n steps ahead
+        // This creates a gap of n nodes between fast and slow
+        for (int i = 0; i < n; i++) {
+            fast = fast.next;
+        }
+
+        // Initialize the slow pointer at the head
+        ListNode slow = head;
+
+        // If fast becomes null, the node to remove is the head
+        if (fast == null) {
+            return head.next;
+        }
+
+        // Move both pointers until fast reaches the last node
+        // Now slow will be just before the node to be removed
+        while (fast.next != null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // Skip the Nth node from the end to remove it
+        slow.next = slow.next.next;
+
+        // Return the updated linked list
         return head;
     }
 }
