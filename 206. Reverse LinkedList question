@@ -1,0 +1,46 @@
+//Iterative Approach
+
+#BRUTEFORCE APPROACH (Data Replacement)
+
+Key- Idea :
+- Traverse the linked list and push each node's value onto a stack.
+- Reset temp = head to start from the first node again.
+- Traverse the list again and pop values from the stack to overwrite each node's value in reverse order.
+- Return head.
+Time Complexity: \(O(n)\) — Two traversals of the linked list, each taking \(O(n)\).
+
+Space Complexity: \(O(n)\) — The stack stores all \(n\) node values.
+
+CODE:=>
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode temp = head;
+        Stack<Integer> st = new Stack<>();
+
+        //store data
+        while(temp != null) {
+            st.push(temp.val);
+            temp = temp.next;
+        }
+        //move temp to start head node
+        temp = head;
+
+        //rewrite data
+        while(temp != null) {
+            temp.val = st.pop();
+            temp = temp.next;
+        }
+        return head;
+    }
+}
