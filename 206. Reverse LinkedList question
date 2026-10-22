@@ -44,3 +44,37 @@ class Solution {
         return head;
     }
 }
+
+
+
+#OPTIMIZED APPROACH  (Links Arrangement)
+
+Key Idea (Iterative Reversal – Three Pointers)
+- Initialize prev = null, temp = head, and use next to save the next node.
+- Store temp.next in next so the remaining list is not lost.
+- Reverse the current link using temp.next = prev.
+- Move prev to temp and temp to next.
+- Repeat until temp == null. At this point, prev is the new head of the reversed list.
+Time Complexity: \(O(n)\) — Each node is visited once.
+
+Space Complexity: \(O(1)\) — Only three pointer variables are used.
+
+
+CODE:=>
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode temp = head;
+        ListNode prev = null;
+        ListNode next ;
+
+        //arranging links
+        while(temp != null) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+
+        return prev;
+    }
+}
