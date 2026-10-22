@@ -78,3 +78,41 @@ class Solution {
         return prev;
     }
 }
+
+
+
+
+//REcursive Approach
+
+#Optimized solution!
+
+Key Idea (Recursive Reversal)
+- Base case: If head == null or head.next == null, return head because an empty or single-node list is already reversed.
+- Recursive call: reverseList(head.next) reverses the remaining linked list and returns its new head.
+- Reverse the link: Set front = head.next, then front.next = head to point the next node back to the current node.
+- Break the old link: Set head.next = null to avoid creating a cycle.
+- Return: newHead, which points to the first node of the reversed list.
+Time Complexity: \(O(n)\) — Each node is processed once.
+
+Space Complexity: \(O(n)\) — The recursion call stack can grow up to \(n\) calls.
+
+
+CODE: => 
+
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        //base case
+        if(head == null || head.next == null) {
+            return head;
+        }
+
+        //actual recursive flow
+        ListNode front;
+
+        ListNode newHead = reverseList(head.next);
+        front = head.next;
+        front.next = head;
+        head.next = null;
+
+        return newHead;
+    }
